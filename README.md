@@ -418,6 +418,19 @@ Instead of mannually adding/controling data, its nice to dinamically render item
 - @for loop must have a track
 - track - expression for Angular to reuse rendered list item and does not need to recreate it everytime something changes. With it, we are telling Angular which unique id criteria can be assigned by Angular, automatically behind the scenes, to every list item or element
 
+<hr>
+
+Alternative syntax
+
+```
+<li *ngFor="let user of users">
+    <app-user [user]="user" (select)="onSelectUser($event)" />
+</li>
+```
+
+- ngFor should be imported from angular/common in component class and added to imports array
+- ngFor is a structural directive. They are enhancements that you can add to elements, that will change those elements, or change the DOM where those elements are used
+
 <br>
 
 ## Conditional content
@@ -429,3 +442,16 @@ We use @if, @else features to render specific markup only if condition is true
     <app-tasks [name]="selectedUser.name" />
 }
 ```
+
+<hr>
+
+Alternative syntax
+
+```
+<app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser!.name" />
+    <ng-template #fallback>
+        <p id="fallback">Select a user to see their tasks!</p>
+    </ng-template>
+```
+
+- ngIf should be imported from angular/common in component class and added to imports array
