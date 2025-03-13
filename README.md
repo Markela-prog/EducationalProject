@@ -187,3 +187,30 @@ A signal is an object that stores a value (any type of value, including nested o
 Angular manages subscriptions to the signal to get notified about value changes
 
 When a change occurs, Angular is then able to update the part of the UI that needs updations
+
+To change signal value use set method:
+(variable is the signal object with name param)
+`variable.set(value)`
+
+To extract or access the signal value you have to call the signal value as a function:
+
+`{{ variable().name }}`
+
+<br>
+
+Computed values cannot be created with getter anymore if using signals. Instead, we use computed function from Angular core, which is meant to be used with signals
+computed takes the function as an argument, which should return a computed value which may use a signal (`computed(() => )`)
+Example:
+```
+export class UserComponent {
+  selectedUser = DUMMY_USERS[randomIndex];
+  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+
+
+  // get imagePath() {
+  //   return 'assets/users/' + this.selectedUser.avatar
+  // }
+}
+```
+computed under the hood also creates a signal, that why we need to call imagePath as a function:
+`<img [src]="imagePath()" [alt]="selectedUser().name" />`
