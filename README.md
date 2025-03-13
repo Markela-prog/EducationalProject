@@ -440,8 +440,10 @@ We use @if, @else features to render specific markup only if condition is true
 
 ```
 @if (selectedUser) {
-    <app-tasks [name]="selectedUser.name" />
-}
+        <app-tasks [UserId]="selectedUser.id" [name]="selectedUser.name" />
+    } @else {
+        <p id="fallback">Select a user to see their tasks!</p>
+    }
 ```
 
 <hr>
