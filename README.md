@@ -290,6 +290,7 @@ In AppTemplate
     <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)" />
 </li>
 ```
+
 <hr>
 
 Alternative way of creating output
@@ -351,8 +352,11 @@ Alternative would be
 `<app-tasks [name]="selectedUser ? selectedUser.name : ''" />`
 
 <hr>
+
 Union type
+
 <br>
+
 Alternative syntax for ? mark
 Instead of adding a ? mark you could change type on right side of colon, such that you make it clear that the accepted value types of name are either of type string or type of undefined
 
@@ -392,5 +396,36 @@ interface User {
     id: string;
     name: string;
     avatar: string;
+}
+```
+
+<br>
+
+## Dynamic content
+
+Instead of mannually adding/controling data, its nice to dinamically render items that may change
+
+```
+@for (user of users; track user.id){
+        <li>
+            <app-user [user]="user" (select)="onSelectUser($event)" />
+        </li>
+    }
+```
+
+- user is up to you
+- users must refer to some property of component class which hold list data
+- @for loop must have a track
+- track - expression for Angular to reuse rendered list item and does not need to recreate it everytime something changes. With it, we are telling Angular which unique id criteria can be assigned by Angular, automatically behind the scenes, to every list item or element
+
+<br>
+
+## Conditional content
+
+We use @if, @else features to render specific markup only if condition is true
+
+```
+@if (selectedUser) {
+    <app-tasks [name]="selectedUser.name" />
 }
 ```
