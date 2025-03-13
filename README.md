@@ -124,13 +124,15 @@ There are 2 main ways Binding template or parts of template to values generated 
 
 Computing value (construct value of multiple values):
 
-`export class UserComponent {
+```
+export class UserComponent {
   selectedUser = DUMMY_USERS[randomIndex];
 
   get imagePath() {
     return 'assets/users/' + this.selectedUser.avatar
   }
-}`
+}
+```
 
 get - getter
 imagePath() - identifier
