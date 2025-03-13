@@ -238,3 +238,48 @@ We use Input decorator to mark a property as setable from outside
 
 - ! mark tells TypeScript that we know that this will definitely be set to some value eventhough TypeScript cant see it
 
+<br>
+
+Input values/properties can be configured by passing config object:
+
+`@Input({required: true}) avatar!: string;`
+
+required: true means that property must be set
+
+<hr>
+<br>
+
+## Outputs
+
+We use Output decorator for a property
+
+
+`@Output() select = new EventEmitter();`
+
+- select is a custom select event
+- @Output is a decorator
+- EventEmitter will allow to emit custom values through select property to any parent component that interested
+
+- $event is a special Angular variable used in parts where you handle events in templates, that will hold the data/value that was emitted by event you are listening to
+
+Example:
+In UserComponent
+```
+@Output() select = new EventEmitter();
+
+onSelectUser() {
+    this.select.emit(this.id);
+  }
+```
+In AppComponent
+```
+onSelectUser(id: string) {
+    console.log('Selected user with id ' + id);
+  }
+```
+In AppTemplate
+```
+<li>
+    <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)" />
+</li>
+```
