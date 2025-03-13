@@ -200,6 +200,7 @@ Signals used to notify Angular about value changes and required UI updates
 
 - Computed values cannot be created with getter anymore if using signals. Instead, we use computed function from Angular core, which is meant to be used with signals
 computed takes the function as an argument, which should return a computed value which may use a signal `computed(() => )`
+<br>
 Example:
 ```
 export class UserComponent {
@@ -253,7 +254,6 @@ required: true means that property must be set
 
 We use Output decorator for a property
 
-
 `@Output() select = new EventEmitter();`
 
 - select is a custom select event
@@ -263,6 +263,7 @@ We use Output decorator for a property
 - $event is a special Angular variable used in parts where you handle events in templates, that will hold the data/value that was emitted by event you are listening to
 
 Example:
+<br>
 In UserComponent
 ```
 @Output() select = new EventEmitter();
