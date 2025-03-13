@@ -176,29 +176,29 @@ Add event listener to element in brackets () -> `<button (click)>`
 
 Signals used to notify Angular about value changes and required UI updates
 
-Requires usage of special "signal" instructions and code
+- Requires usage of special "signal" instructions and code
 
 `signal(value)`
 
-Signals are trackable data containers
+- Signals are trackable data containers
 
-A signal is an object that stores a value (any type of value, including nested objects)
+- A signal is an object that stores a value (any type of value, including nested objects)
 
-Angular manages subscriptions to the signal to get notified about value changes
+- Angular manages subscriptions to the signal to get notified about value changes
 
-When a change occurs, Angular is then able to update the part of the UI that needs updations
+- When a change occurs, Angular is then able to update the part of the UI that needs updations
 
-To change signal value use set method:
+- To change signal value use set method:
 (variable is the signal object with name param)
 `variable.set(value)`
 
-To extract or access the signal value you have to call the signal value as a function:
+- To extract or access the signal value you have to call the signal value as a function:
 
 `{{ variable().name }}`
 
 <br>
 
-Computed values cannot be created with getter anymore if using signals. Instead, we use computed function from Angular core, which is meant to be used with signals
+- Computed values cannot be created with getter anymore if using signals. Instead, we use computed function from Angular core, which is meant to be used with signals
 computed takes the function as an argument, which should return a computed value which may use a signal (`computed(() => )`)
 Example:
 ```
@@ -212,5 +212,5 @@ export class UserComponent {
   // }
 }
 ```
-computed under the hood also creates a signal, that why we need to call imagePath as a function:
+- computed under the hood also creates a signal, that why we need to call imagePath as a function:
 `<img [src]="imagePath()" [alt]="selectedUser().name" />`
