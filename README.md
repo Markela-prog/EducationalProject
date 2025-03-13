@@ -139,3 +139,51 @@ imagePath() - identifier
 
 Its a method thats usable like a property so that does not need to be called and executed
 and thats meant to produce and return a new value
+
+<br>
+
+## Components
+
+When building a component start with exporting class.
+
+Decorator (TypeScript feature which adds metadata to the class):
+```
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+```
+
+selector - tells angular for which elements it should look in the html code, so that those elements
+	can be replaced by current component and its markup (template)
+
+Every component have template
+
+!!! All properties that are defined in component class are accessible in component template.
+
+<br>
+
+## Event listener
+
+Add event listener to element in brackets () -> `<button (click)>`
+
+<br>
+
+## Signals
+
+Signals used to notify Angular about value changes and required UI updates
+
+Requires usage of special "signal" instructions and code
+
+`signal(value)`
+
+Signals are trackable data containers
+
+A signal is an object that stores a value (any type of value, including nested objects)
+
+Angular manages subscriptions to the signal to get notified about value changes
+
+When a change occurs, Angular is then able to update the part of the UI that needs updations
