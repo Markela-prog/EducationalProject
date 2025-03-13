@@ -314,3 +314,49 @@ Why output function exists?
 If you are using @Output decorator approach, you can still add generic type assignment by add angle brackets as input/output functions, to let TypeScript know about the type of value that will be emitted. It is not required, but good practice if we expect the specific type value
 
 `@Output() select = new EventEmitter<string>();`
+
+<br>
+
+## TypeScript: Potential undefined values
+
+- The main thing/advantage TypeScript brings to the table is that it enforces strong and static typing. Which means you have to be clear about which type of value goes where
+
+There is a possibility that user which such id will not be found and return undefined, so that will crash app (Runtime error)
+
+- When you add ! mark, you are not technically ruling out the possibility of getting an undefined value, you just convincing TypeScript that you (developer) know that you will never have undefined value in specific place
+
+<br>
+
+For Example:
+```
+get selectedUser() {
+    return this.users.find((user) => user.id === this.selectedUserId);
+  }
+```
+There you cannot be 100% sure if its not going to be undefined, its better to setup fallback code
+
+`@Input({ required: true }) name!: string;`
+
+into
+
+`@Input() name?: string;`
+
+The ? mark tells TypeScript "Its fine, this might not be set, and i aware of that"
+
+`<app-tasks [name]="selectedUser?.name" />`
+
+So we access name property only if have object
+Alternative would be
+
+`<app-tasks [name]="selectedUser ? selectedUser.name : ''" />`
+
+<hr>
+Union type
+<br>
+Alternative syntax for ? mark
+Instead of adding a ? mark you could change type on right side of colon, such that you make it clear that the accepted value types of name are either of type string or type of undefined
+
+`@Input() name: string | undefined;`
+
+The | symbol is an operator which creates union type, it tells TypeScript that type of value that can be stored in something is either of type string or type undefined
+
