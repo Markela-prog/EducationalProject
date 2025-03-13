@@ -308,3 +308,9 @@ Why output function exists?
 1) At the end they do the same
 2) If you use input functions, you use output function to avoid decorators in component
 3) Outer function shorter than decorator
+
+<br>
+
+If you are using @Output decorator approach, you can still add generic type assignment by add angle brackets as input/output functions, to let TypeScript know about the type of value that will be emitted. It is not required, but good practice if we expect the specific type value
+
+`@Output() select = new EventEmitter<string>();`
