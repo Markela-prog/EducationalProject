@@ -135,6 +135,7 @@ export class UserComponent {
 ```
 
 get - getter
+
 imagePath() - identifier
 
 Its a method thats usable like a property so that does not need to be called and executed
@@ -158,7 +159,7 @@ Decorator (TypeScript feature which adds metadata to the class):
 ```
 
 selector - tells angular for which elements it should look in the html code, so that those elements
-	can be replaced by current component and its markup (template)
+can be replaced by current component and its markup (template)
 
 Every component have template
 
