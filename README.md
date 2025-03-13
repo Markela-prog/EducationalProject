@@ -290,3 +290,21 @@ In AppTemplate
     <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)" />
 </li>
 ```
+<hr>
+
+Alternative way of creating output
+
+Instead of @Output decorator we use output function from angular/core
+
+`select = output<string>();`
+
+Under the hood, output function also store an EventEmitter, so we do not need to create emitter on your own
+
+- `<string>` the type of value that will be emitted
+- select is a event emitter !!! ouput does not create any kind of signal like input function does
+
+Why output function exists?
+
+1) At the end they do the same
+2) If you use input functions, you use output function to avoid decorators in component
+3) Outer function shorter than decorator
