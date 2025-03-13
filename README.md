@@ -360,3 +360,37 @@ Instead of adding a ? mark you could change type on right side of colon, such th
 
 The | symbol is an operator which creates union type, it tells TypeScript that type of value that can be stored in something is either of type string or type undefined
 
+- We can simplify 3 @Input, by excepting only 1 property (entire user) as all users are made of the same pieces of data
+
+```
+@Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+```
+
+- {} creates an user object type
+
+Object types can become complex, so we should use type alias
+
+```
+type User = {
+    id: string;
+    name: string;
+    avatar: string;
+}
+```
+So its created own type User, which can be used in @Input
+
+`@Input({ required: true }) user!: User;`
+
+Alternative way
+
+```
+interface User {
+    id: string;
+    name: string;
+    avatar: string;
+}
+```
