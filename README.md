@@ -199,12 +199,12 @@ Signals used to notify Angular about value changes and required UI updates
 <br>
 
 - Computed values cannot be created with getter anymore if using signals. Instead, we use computed function from Angular core, which is meant to be used with signals
-computed takes the function as an argument, which should return a computed value which may use a signal (`computed(() => )`)
+computed takes the function as an argument, which should return a computed value which may use a signal `computed(() => )`
 Example:
 ```
 export class UserComponent {
-  selectedUser = DUMMY_USERS[randomIndex];
-  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+    selectedUser = DUMMY_USERS[randomIndex];
+    imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
 
 
   // get imagePath() {
@@ -212,5 +212,29 @@ export class UserComponent {
   // }
 }
 ```
-- computed under the hood also creates a signal, that why we need to call imagePath as a function:
+- Computed function under the hood also creates a signal, that why we need to call imagePath as a function:
 `<img [src]="imagePath()" [alt]="selectedUser().name" />`
+
+<br>
+
+## Inputs
+
+We use Input decorator to mark a property as setable from outside
+
+`@Input() avatar`
+```
+<li>
+    <app-user [avatar]="users[0].avatar" [name]="users[0].name" />
+</li>
+```
+
+- In TypeScript if we do not have initial value (we expect value to be set from outside), we have to define/assign type
+
+`@Input() avatar: string;`
+
+- If property has no initializer and is not definitely assigned in the custructor (TypeScript knows that this should be a string, but it does not understand that we are using an Angular mechanism for receiving the value of the property, but TypeScript sees that there is no value being set at any point in this component)
+
+`@Input() avatar!: string;`
+
+- ! mark tells TypeScript that we know that this will definitely be set to some value eventhough TypeScript cant see it
+
