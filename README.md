@@ -515,6 +515,7 @@ Pipes are a special operator in Angular template expressions that allows you to 
 
 You tell Angular which type of value you need and Angular creates it and provides it as an argument
 `constructor(tasksService: TasksService) {}`
+`private tasksService = inject(TasksService);`
 We should specify/register a service class as Injectable for Angular, so Angular will aware of that service and can create an instance, which will create and reuse 1 instance!
 ```
 @Injectable({ providedIn: 'root' })
