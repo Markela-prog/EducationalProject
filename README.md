@@ -487,3 +487,21 @@ Components are directives! Directives with templates
 6. ng-content - an element, acts as a placeholder for the wrapped markup (Content projection)
 
 !!! FormsModule should be imported if you want to work with forms related directives (ngModel, ngSubmit)
+
+## Pipes
+
+Pipes are a special operator in Angular template expressions that allows you to transform data declaratively in your template. Pipes let you declare a transformation function once and then use that transformation across multiple templates. Angular pipes use the vertical bar character (|)
+
+1) AsyncPipe	Read the value from a Promise or an RxJS Observable.
+2) CurrencyPipe	Transforms a number to a currency string, formatted according to locale rules.
+3) DatePipe	Formats a Date value according to locale rules. E.g. `<time>{{ task.dueDate | date: 'fullDate' }}</time>`
+4) DecimalPipe	Transforms a number into a string with a decimal point, formatted according to locale rules.
+5) I18nPluralPipe	Maps a value to a string that pluralizes the value according to locale rules.
+6) I18nSelectPipe	Maps a key to a custom selector that returns a desired value.
+7) JsonPipe	Transforms an object to a string representation via JSON.stringify, intended for debugging.
+8) KeyValuePipe	Transforms Object or Map into an array of key value pairs.
+9) LowerCasePipe	Transforms text to all lower case.
+10) PercentPipe	Transforms a number to a percentage string, formatted according to locale rules.
+11) SlicePipe	Creates a new Array or String containing a subset (slice) of the elements.
+12) TitleCasePipe	Transforms text to title case.
+13) UpperCasePipe	Transforms text to all upper case.
