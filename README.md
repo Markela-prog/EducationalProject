@@ -484,9 +484,11 @@ Components are directives! Directives with templates
 3. ng-template
 4. ngModel - an element enhancement that helps with extracting or changing user input values (form related elements) 
 `<input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>`
+Give access to entered value in input + let to write data back into input (listen + output)
 5. ngSubmit - event to which you can listen on form element, which will occur when form submission happened and that browser default was prevented. Then you can run your own code in response to this ngSubmit event 
 `<form (ngSubmit)="onSubmit()">`
 6. ng-content - an element, acts as a placeholder for the wrapped markup (Content projection)
+
 
 !!! FormsModule should be imported if you want to work with forms related directives (ngModel, ngSubmit)
 
@@ -511,13 +513,22 @@ Pipes are a special operator in Angular template expressions that allows you to 
 
 ## Services
 
+Do not handle component logic in component class, do it in service class
+
+Performs operations and/or manages some data, that might be needed by 1 or more other components
+
 ## Dependency Injection
 
 You tell Angular which type of value you need and Angular creates it and provides it as an argument
-`constructor(tasksService: TasksService) {}`
+`constructor(private tasksService: TasksService) {}`
 `private tasksService = inject(TasksService);`
 We should specify/register a service class as Injectable for Angular, so Angular will aware of that service and can create an instance, which will create and reuse 1 instance!
 ```
 @Injectable({ providedIn: 'root' })
 export class TasksService {}
 ```
+
+## Module components
+
+Angular Modules make components (& more) available to each other
+
