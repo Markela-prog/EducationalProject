@@ -482,19 +482,22 @@ Components are directives! Directives with templates
 1. ngIf
 2. ngFor
 3. ng-template
-4. ngModel - an element enhancement that helps with extracting or changing user input values (form related elements) `<input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>`
-5. ngSubmit - event to which you can listen on form element, which will occur when form submission happened and that browser default was prevented. Then you can run your own code in response to this ngSubmit event `<form (ngSubmit)="onSubmit()">`
+4. ngModel - an element enhancement that helps with extracting or changing user input values (form related elements) 
+`<input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>`
+5. ngSubmit - event to which you can listen on form element, which will occur when form submission happened and that browser default was prevented. Then you can run your own code in response to this ngSubmit event 
+`<form (ngSubmit)="onSubmit()">`
 6. ng-content - an element, acts as a placeholder for the wrapped markup (Content projection)
 
 !!! FormsModule should be imported if you want to work with forms related directives (ngModel, ngSubmit)
 
 ## Pipes
 
-Pipes are a special operator in Angular template expressions that allows you to transform data declaratively in your template. Pipes let you declare a transformation function once and then use that transformation across multiple templates. Angular pipes use the vertical bar character (|)
+Pipes are a special operator in Angular template expressions that allows you to transform data declaratively in your template. Pipes let you declare a transformation function once and then use that transformation across multiple templates. Angular pipes use the vertical bar character ( | )
 
 1) AsyncPipe	Read the value from a Promise or an RxJS Observable.
 2) CurrencyPipe	Transforms a number to a currency string, formatted according to locale rules.
-3) DatePipe	Formats a Date value according to locale rules. E.g. `<time>{{ task.dueDate | date: 'fullDate' }}</time>`
+3) DatePipe	Formats a Date value according to locale rules. E.g. 
+`<time>{{ task.dueDate | date: 'fullDate' }}</time>`
 4) DecimalPipe	Transforms a number into a string with a decimal point, formatted according to locale rules.
 5) I18nPluralPipe	Maps a value to a string that pluralizes the value according to locale rules.
 6) I18nSelectPipe	Maps a key to a custom selector that returns a desired value.
