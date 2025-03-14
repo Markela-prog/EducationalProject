@@ -9,7 +9,7 @@ import { TasksComponent } from './tasks/tasks.component';
   standalone: true,
   imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   users = DUMMY_USERS;
